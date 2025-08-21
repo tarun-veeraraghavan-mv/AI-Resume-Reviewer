@@ -3,9 +3,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import JobDescription
 from ai.resume_analysis.graph import app
+from background_tasks.tasks import hello
+from celery.result import AsyncResult
 
 @api_view(["GET"])
-def hello(request):
+def health(request):
     return Response("ok")
 
 @api_view(["POST"])
@@ -64,3 +66,22 @@ def delete_job_description(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
     except JobDescription.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+@api_view(["GET"])
+def test_task(request):
+    res = hello.delay()
+    return Response({"task_id": res.id})
+
+@api_view(["GET"])
+def get_task_status(request, task_id):
+    result = AsyncResult(task_id)
+
+    response = {
+        "task_id": task_id,
+        "status": result.status,
+    }
+
+    if result.status == "SUCCESS":
+        response["result"] = result.result
+
+    return Response(response)
