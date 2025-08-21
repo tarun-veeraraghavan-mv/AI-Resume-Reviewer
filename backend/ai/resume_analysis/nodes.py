@@ -21,29 +21,6 @@ def parse_resume_sections(state: AgentState) -> AgentState:
     return state
 
 def analyze_resume_sections(state: AgentState) -> AgentState:
-    state["job_description_text"] = """
-    Frontend Engineer
-
-We are looking for a skilled Frontend Engineer to join our growing web development team. You will be responsible for building responsive, high-performance web applications and collaborating closely with designers and backend developers to deliver a seamless user experience.
-
-Responsibilities:
-- Develop and maintain web applications using React and TypeScript.
-- Collaborate with UI/UX designers to implement responsive and accessible designs.
-- Optimize applications for maximum speed and scalability.
-- Write reusable, maintainable code and implement best practices.
-- Participate in code reviews and team knowledge sharing.
-
-Requirements:
-- 2+ years of professional experience in frontend development.
-- Strong proficiency in JavaScript, TypeScript, HTML5, CSS3, and modern frameworks (React, Redux).
-- Experience with CSS frameworks like Tailwind CSS or SASS.
-- Familiarity with version control systems (Git) and modern build tools (Webpack, Vite).
-- Knowledge of testing frameworks such as Jest and React Testing Library.
-- Strong problem-solving skills and attention to detail.
-- Excellent communication and teamwork abilities.
-
-    """
-
     structured_llm = llm.with_structured_output(ResumeEvaluation)
 
     res = structured_llm.invoke(f"""

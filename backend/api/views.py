@@ -5,6 +5,7 @@ from .models import JobDescription
 from ai.resume_analysis.graph import app
 from background_tasks.tasks import hello
 from celery.result import AsyncResult
+from background_tasks.tasks import analyze_resume
 
 @api_view(["GET"])
 def health(request):
@@ -20,11 +21,9 @@ def resume_review(request):
     except JobDescription.DoesNotExist:
         return Response({"error": "Job description not found"}, status=status.HTTP_404_NOT_FOUND)
 
-    # Here you would typically invoke your AI graph with both the resume and job description
-    # For now, we'll just simulate a response
-    res = app.invoke({"resume_text": resume_text, "job_description": job_description.job_description})
+    res = analyze_resume.delay(resume_text, job_description.job_description)
     
-    return Response({'message': 'Resume submitted for review', 'result': res}, status=status.HTTP_200_OK)
+    return Response({'message': 'Resume submitted for review', 'result': res.id}, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
 def create_job_description(request):
