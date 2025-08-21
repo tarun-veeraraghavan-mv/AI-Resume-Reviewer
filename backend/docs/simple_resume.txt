@@ -1,0 +1,35 @@
+John Doe
+Email: john.doe@example.com | Phone: (123) 456-7890
+LinkedIn: linkedin.com/in/johndoe | GitHub: github.com/johndoe
+
+Professional Summary
+Passionate Frontend Developer with 3+ years of experience building responsive web applications using React, TypeScript, and modern CSS frameworks. Strong focus on performance, accessibility, and delivering pixel-perfect UI.
+
+Skills
+- Languages: JavaScript, TypeScript, HTML5, CSS3, SASS
+- Frameworks/Libraries: React, Redux, Next.js, Tailwind CSS
+- Tools: Git, Webpack, Vite, Figma
+- Testing: Jest, React Testing Library
+
+Work Experience
+
+Frontend Developer | Tech Solutions Inc. | Jan 2022 – Present
+- Developed and maintained React-based SPA for e-commerce platform serving 50k+ monthly users.
+- Improved page load times by 30% through code-splitting and lazy loading.
+- Collaborated with UX/UI team to implement responsive, accessible designs.
+
+Junior Frontend Developer | WebWorks Studio | Jun 2020 – Dec 2021
+- Built reusable React components and implemented state management with Redux.
+- Converted Figma mockups into functional, responsive web pages.
+- Assisted in migrating legacy jQuery codebase to modern React stack.
+
+Education
+B.Sc. in Computer Science | State University | 2016 – 2020
+
+Projects
+- Portfolio Website – Personal portfolio built with Next.js, Tailwind CSS, and Framer Motion.
+- Task Manager App – React + Redux-based application for managing daily tasks with real-time updates.
+
+Certifications
+- Frontend Web Development Nanodegree – Udacity, 2021
+- JavaScript Algorithms and Data Structures – freeCodeCamp, 2020
