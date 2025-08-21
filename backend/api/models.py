@@ -23,3 +23,17 @@ class JobDescription(models.Model):
 
     def __str__(self):
         return self.job_title
+
+class ResumeAnalysisResult(models.Model):
+    job_description = models.ForeignKey(JobDescription, on_delete=models.CASCADE, related_name='analysis_results')
+    resume_text = models.TextField()
+    ats_score = models.IntegerField()
+    skill_match_score = models.IntegerField()
+    experience_score = models.IntegerField()
+    education_score = models.IntegerField()
+    overall_score = models.IntegerField()
+    feedback = models.JSONField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Analysis for {self.job_description.job_title} on {self.created_at.strftime('%Y-%m-%d')}"

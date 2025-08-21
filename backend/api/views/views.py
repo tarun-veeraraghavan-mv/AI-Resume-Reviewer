@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import JobDescription
+from ..models import JobDescription
 from ai.resume_analysis.graph import app
 from background_tasks.tasks import hello
 from celery.result import AsyncResult
@@ -21,7 +21,7 @@ def resume_review(request):
     except JobDescription.DoesNotExist:
         return Response({"error": "Job description not found"}, status=status.HTTP_404_NOT_FOUND)
 
-    res = analyze_resume.delay(resume_text, job_description.job_description)
+    res = analyze_resume.delay(resume_text, job_description.job_description, job_description.id)
     
     return Response({'message': 'Resume submitted for review', 'result': res.id}, status=status.HTTP_200_OK)
 
