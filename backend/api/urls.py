@@ -1,5 +1,9 @@
 from django.urls import path
-from .views import health, resume_review, create_job_description, get_job_descriptions, delete_job_description, test_task, get_task_status
+from .views.views import health, resume_review
+
+# views
+from .views.job_description import create_job_description, get_job_descriptions, delete_job_description
+from .views.background_tasks import test_task, get_task_status
 
 urlpatterns = [
     path("health/", health),
